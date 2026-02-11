@@ -141,7 +141,7 @@ void loop() {
     last = now;
 
     // Measurements
-    float busV  = ina219.getBusVoltage_V();          // Volts (load side)
+    float busV  = ina219.getBusVoltage_V()+ ina219.getShuntVoltage_mV() / 1000.0;     // Volts (load side)
     float currA = ina219.getCurrent_mA() / 1000.0f;  // Amps (uses calibration)
     float pW    = busV * currA;                      // Watts (or use ina219.getPower_mW()/1000)
 
